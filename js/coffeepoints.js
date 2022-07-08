@@ -1,7 +1,7 @@
 
 /*Створити класс і екземляр який матиме наступний вигляд
 
-class Coffee_points { 
+class CoffeePointsProffesional { 
    name
    location
    coffeeeQuipment{
@@ -9,7 +9,7 @@ class Coffee_points {
             this.model = Rancilio/Astoria/Iberital
             this.serialNumber = 'S/N' ....
             this.repairs = {
-                [Дата, Ім'я техніка, Які запчастини були використані(якщо ні то -), Які роботи виконувалися]            
+                [Дата, Ім'я техніка, Які запчастини були використані(якщо ні то -), Які роботи виконувалися]  чи {}      
                 }
 
             }
@@ -18,13 +18,13 @@ class Coffee_points {
                 this.serialNumber = 'S/N'
                 Формат зберігання даних
                 [08.07.22, 100, 231, 501,]
-                [date, statistic-of-day, statistic-of-weeks, statistic-total-1]
-                [date, statistic-of-day, statistic-of-weeks, statistic-total-2]
+                [date, statistic-of-day, statistic-of-weeks, statistic-total-1] чи  {}  
+                [date, statistic-of-day, statistic-of-weeks, statistic-total-2] чи  {} 
 
                 Добавляється новий масив при знятті статистики з кавової точки                
                 ...
-                1) добавити метод обрахування і виведення користувачу statistic-total = statistic-total-2 - statistic-total-1
-                2) добавити метод заміни будь якого значення statistic-of-day, statistic-of-weeks, statistic-total-1, 
+                1) добавити метод обрахування і виведення користувачу statistic-total = statistic-total-2 - statistic-total-1  чи  {} 
+                2) добавити метод заміни будь якого значення statistic-of-day, statistic-of-weeks, statistic-total-1,  чи  {} 
                 }
 
             obel {
@@ -44,15 +44,8 @@ class Coffee_points {
    }
 
 */
-class Coffee_points { 
-    // constructor(name ='', location='') {
-    //     this.name = name;
-    //     this.location = location; 
-    //     console.log(`Build new coffee point. Name ${this.name} location ${this.location}`);
-    // }
-
-// 1) Чи можна задати параметри по замовчанню в конструкторі при даному оголошенні
-    constructor({name, location} = {}) {
+class CoffeePoints {
+    constructor({name = '', location = ''} = {}) {
         this.name = name;
         this.location = location; 
         console.log(`Build new coffee point. Name ${this.name} location ${this.location}`);
@@ -69,6 +62,14 @@ class Coffee_points {
     getInfoAboutCoffeePoint() {        
         return console.log(this);
     }
+    
+    // }
+}
+
+class CoffeePointsProffesional extends CoffeePoints {
+    constructor(config) {
+        super(config);
+    }
     addCoffeeGrinder(model) {
         // const modelToLowerCase = model.toLowerCase();
         switch (model.toLowerCase()) {
@@ -81,19 +82,21 @@ class Coffee_points {
                 break;
             
             case 'eureka':
-                console.log(`The model ${model} is create `);  
+                console.log(`The model ${model} is create `);
                 break;
-            default :
-                console.log(`The model ${model} isn't find `);;
-            }    
+            default:
+                console.log(`Error. The model ${model} isn't find `);;
+        }
     }
+
 }
 
+
 // ================================================================================
-Coffee_points.description = "A class is about coffee points "
-const coffee_point_1 = new Coffee_points();
-coffee_point_1.getInfoAboutCoffeePoint();
-coffee_point_1.addCoffeeGrinder('f54');
-coffee_point_1.addCoffeeGrinder('fiorenzato');
-coffee_point_1.addCoffeeGrinder('FiorenZato')
+
+// const coffeePoint_1 = new CoffeePointsProffesional();
+// coffeePoint_1.getInfoAboutCoffeePoint();
+// coffeePoint_1.addCoffeeGrinder('f54');
+// coffeePoint_1.addCoffeeGrinder('fiorenzato');
+// coffeePoint_1.addCoffeeGrinder('FiorenZato')
 // console.log(coffee_point_1);
